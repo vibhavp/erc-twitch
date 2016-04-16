@@ -8,7 +8,7 @@
 ;; Keywords: twitch erc emotes
 
 ;;; Commentary:
-;; Enables usage of Twitch emotes in chat
+;; Support for Twitch emotes on ERC.  Enable with `erc-twitch-enable`.
 
 ;;; License:
 
