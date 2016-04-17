@@ -30,8 +30,8 @@
 (require 'json)
 (require 'erc)
 
-(defvar erc-twitch-emote-template "")
-(defvar erc-twitch-emotes "")
+(defvar erc-twitch-emote-template nil)
+(defvar erc-twitch-emotes nil)
 (defcustom erc-twitch-cache-dir (let ((dir (concat user-emacs-directory "erc-twitch/")))
 				  (make-directory dir :parents)
 				  dir)
@@ -67,7 +67,7 @@
 
 (defun erc-twitch--perform-substitution (buffer)
   (unless erc-twitch-emotes
-    (erc-twitch--get-emotes-json))
+    (erc-twitch--read-emotes))
   (with-current-buffer buffer
     (let ((wordlist (split-string (buffer-substring-no-properties (point-min) (- (point-max) 1)) " ")))
       (dolist (word wordlist)
@@ -79,7 +79,8 @@
 	      (while (re-search-forward word nil t)
 		(replace-match "")
 		(put-image
-		 (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) (point) word)))))))))
+		 (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) (point) word)
+		(add-text-properties (point) (point) '(help-echo word))))))))))
 
 (defun erc-twitch-replace-text ()
   (erc-twitch--perform-substitution (current-buffer)))
