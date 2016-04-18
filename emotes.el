@@ -1,4 +1,4 @@
-;;; erc-social-graph.el --- A social network graph module for ERC.
+;;; emotes.el --- A social network graph module for ERC.
 
 ;; Copyright (C) 2014 Vibhav Pant <vibhavp@gmail.com>
 
