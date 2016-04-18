@@ -1,4 +1,4 @@
-;;; emotes.el --- A social network graph module for ERC.
+;;; erc-twitch.el --- Support for Twitch emotes for ERC.
 
 ;; Copyright (C) 2014 Vibhav Pant <vibhavp@gmail.com>
 
