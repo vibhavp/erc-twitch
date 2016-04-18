@@ -70,17 +70,18 @@
     (erc-twitch--read-emotes))
   (with-current-buffer buffer
     (let ((wordlist (split-string (buffer-substring-no-properties (point-min) (- (point-max) 1)) " ")))
-      (dolist (word wordlist)
-	(let ((emote-hash (gethash word erc-twitch-emotes nil))
-	      (image))
+      (dolist (word (cdr wordlist))
+	(let ((emote-hash (gethash word erc-twitch-emotes nil)))
 	  (when emote-hash
 	    (save-excursion
 	      (goto-char (point-min))
-	      (while (re-search-forward word nil t)
-		(replace-match "")
-		(put-image
-		 (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) (point) word)
-		(add-text-properties (point) (point) '(help-echo word))))))))))
+	      (catch 'break
+		(while (re-search-forward word nil t)
+		  (replace-match "")
+		  (put-image
+		   (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) (point) word)
+		  (add-text-properties (point) (point) '(help-echo word))
+		  (throw 'break nil))))))))))
 
 (defun erc-twitch-replace-text ()
   (erc-twitch--perform-substitution (current-buffer)))
