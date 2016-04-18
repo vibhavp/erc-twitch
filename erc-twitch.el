@@ -1,6 +1,6 @@
 ;;; erc-twitch.el --- Support for Twitch emotes for ERC.
 
-;; Copyright (C) 2014 Vibhav Pant <vibhavp@gmail.com>
+;; Copyright (C) 2015 Vibhav Pant <vibhavp@gmail.com>
 
 ;; Url: https://github.com/vibhavp/erc-twitch
 ;; Author: Vibhav Pant <vibhavp@gmail.com>
