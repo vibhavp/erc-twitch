@@ -96,4 +96,4 @@
    (remove-hook 'erc-send-modify-hook 'erc-twitch-replace-text)))
 
 (provide 'erc-twitch)
-;;; emotes.el ends here
+;;; erc-twitch.el ends here
