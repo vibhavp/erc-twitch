@@ -78,9 +78,10 @@
 	      (catch 'break
 		(while (re-search-forward word nil t)
 		  (replace-match "")
-		  (put-image
-		   (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) (point) word)
-		  (add-text-properties (point) (point) '(help-echo word))
+		  (let ((start (point)))
+		    (insert-image
+		     (erc-twitch--get-emote-image (gethash "image_id" emote-hash)) word)
+		    (add-text-properties start (point) '(help-echo word)))
 		  (throw 'break nil))))))))))
 
 (defun erc-twitch-replace-text ()
