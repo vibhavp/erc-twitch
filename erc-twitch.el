@@ -5,6 +5,7 @@
 ;; Url: https://github.com/vibhavp/erc-twitch
 ;; Author: Vibhav Pant <vibhavp@gmail.com>
 ;; Version: 1.0
+;; Package-Requires: ((json "1.3") (erc "5.0"))
 ;; Keywords: twitch erc emotes
 
 ;;; Commentary:
