@@ -71,11 +71,11 @@
     (erc-twitch--read-emotes))
   (with-current-buffer buffer
     (let ((wordlist (split-string (buffer-substring-no-properties (point-min) (- (point-max) 1)) " ")))
-      (dolist (word (cdr wordlist))
-	(let ((emote-hash (gethash word erc-twitch-emotes nil)))
-	  (when emote-hash
-	    (save-excursion
-	      (goto-char (point-min))
+      (save-excursion
+	(goto-char (point-min))
+	(dolist (word (cdr wordlist))
+	  (let ((emote-hash (gethash word erc-twitch-emotes nil)))
+	    (when emote-hash
 	      (catch 'break
 		(while (re-search-forward word nil t)
 		  (replace-match "")
