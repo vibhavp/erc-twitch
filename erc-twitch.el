@@ -48,7 +48,7 @@
 (defun erc-twitch--get-emotes-json ()
   (let ((json-object-type 'hash-table))
     (with-current-buffer
-	(url-retrieve-synchronously "https://twitchemotes.com/api_cache/v2/global.json")
+	(url-retrieve-synchronously "http://twitchemotes.com/api_cache/v2/global.json")
       (json-read-from-string (buffer-substring-no-properties url-http-end-of-headers (point-max))))))
 
 (defun erc-twitch--read-emotes ()
